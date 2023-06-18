@@ -92,7 +92,32 @@ class _CounterFunctionsScreenState extends State<CounterFunctionsScreen> {
           mainAxisAlignment: MainAxisAlignment.end,
           //children es un array de widgets, por ese motivo me permite agregar mas de un widget
           children: [
-            FloatingActionButton(
+            /*   FloatingActionButton(
+              //Shape permite darle forma al boton
+              shape: const StadiumBorder(),
+              onPressed: () {
+                // aca la variable es 0
+                setState(
+                    () {}); // setState re dibuja la pantalla con los valores de
+                clickCounter = 0;
+              },
+              child: const Icon(Icons.refresh_outlined),
+            ),*/
+            //sizedbox permite la separacion entre los botones
+            CustomButton(
+                icon: Icons.refresh_outlined,
+                onPressed: () {
+                  // aca la variable es 0
+                  setState(
+                      () {}); // setState re dibuja la pantalla con los valores de
+                  clickCounter = 0;
+                }),
+            const SizedBox(
+              height: 10,
+            ),
+            /*  FloatingActionButton(
+              //Shape permite darle forma al boton
+              shape: const StadiumBorder(),
               onPressed: () {
                 // aca le sumo uno a la variable clickCounter
                 setState(
@@ -100,17 +125,61 @@ class _CounterFunctionsScreenState extends State<CounterFunctionsScreen> {
                 clickCounter++;
               },
               child: const Icon(Icons.plus_one),
+            ),*/
+            CustomButton(
+                icon: Icons.plus_one,
+                onPressed: () {
+                  // aca la variable es 0
+                  setState(
+                      () {}); // setState re dibuja la pantalla con los valores de
+                  clickCounter++;
+                }),
+            //sizedbox permite la separacion entre los botones
+            const SizedBox(
+              height: 10,
             ),
-            FloatingActionButton(
-              onPressed: () {
-                // aca le sumo uno a la variable clickCounter
-                setState(
-                    () {}); // setState re dibuja la pantalla con los valores de
-                clickCounter--;
-              },
-              child: const Icon(Icons.exposure_minus_1),
-            ),
+            CustomButton(
+                icon: Icons.exposure_minus_1,
+                onPressed: () {
+                  // aca la variable es 0
+                  setState(() {});
+                  // setState re dibuja la pantalla con los valores de
+                  //aca verifico que no sea menor a 0
+                  if (clickCounter == 0) return;
+                  clickCounter--;
+                }),
           ],
         ));
+  }
+}
+
+//ACA creo un widget personalizado para el boton asi no tengo que estar editando 3 botones o mas
+class CustomButton extends StatelessWidget {
+  //Le paso la propiedad icon de tipo IconData
+  final IconData icon;
+  final VoidCallback? onPressed;
+  // cuando tengo un signo de pregunta es opcional '?' lo que reciba
+
+  const CustomButton({
+    //cuales parametros va a recibir  y son requeridos
+    super.key,
+    required this.icon,
+    this.onPressed,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return FloatingActionButton(
+      //Shape permite darle forma al boton
+      //shape: const StadiumBorder(),
+      //enableFeedback: true, //permite que el boton haga una animacion cuando se presiona
+      enableFeedback: true,
+      //Permite el manejo de sombras elevation
+      elevation: 5,
+      //Permite cambiar el color del fondo del boton
+      backgroundColor: Colors.amber,
+      onPressed: onPressed,
+      child: Icon(icon),
+    );
   }
 }
