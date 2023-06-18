@@ -10,11 +10,15 @@ class CounterScreen extends StatefulWidget {
 
   const CounterScreen({super.key});
 
+//creacion del estado
   @override
   State<CounterScreen> createState() => _CounterScreenState();
 }
 
+//llama al estado _CounterScreenState
 class _CounterScreenState extends State<CounterScreen> {
+  //aca puedo declarar variable para este estado
+  int clickCounter = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,20 +28,40 @@ class _CounterScreenState extends State<CounterScreen> {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center, //centra el contenido
-          children: const [
+          children: [
             Text(
-              '10',
-              style: TextStyle(fontSize: 160, fontWeight: FontWeight.w100),
+              //Declaro la variable que quiero mostrar y esta inicializada en 0 dentro de _CounterScreenState
+              '$clickCounter',
+              style:
+                  const TextStyle(fontSize: 160, fontWeight: FontWeight.w100),
             ),
+            //puedo hacer un if ternario para mostrar un texto u otro, en flutter solo esta la opcion de if! no hay else o elseif
+            /*  if (clickCounter == 1)
+              const Text(
+                'Click',
+                style: TextStyle(fontSize: 25),
+              ),
+            if (clickCounter != 1)
+              const Text(
+                'Clicks',
+                style: TextStyle(fontSize: 25),
+              ), */
             Text(
-              'Clicks',
-              style: TextStyle(fontSize: 25),
+              // cuando clickCounter es 1 muestra Click sino muestra Clicks y la funcion que utiliza es  Acceso a propiedades opcionales
+              // click es la palabra y si esta el simbolo de $ quiere decir que va a recibir algo en ese lugar, en el codigo
+              // tenemos clickcounter == 1 y un '?' de pregunta quiere decir que puede ser vacio o la 's' dependiendo del valor.
+              'Click${clickCounter == 1 ? '' : 's'}',
+              style: const TextStyle(fontSize: 25),
             )
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          // aca le sumo uno a la variable clickCounter
+          setState(() {}); // setState re dibuja la pantalla con los valores de
+          clickCounter++;
+        },
         child: const Icon(Icons.plus_one),
       ),
     );
