@@ -29,7 +29,7 @@ class AppTheme {
       // le paso el final del color seleccionado
       colorSchemeSeed: _colorThemes[selectedColor],
       //fondo negro, tambien puedo crearlo como un requerimiento y lo paso como variable.
-      brightness: Brightness.dark,
+      //brightness: Brightness.dark,
     );
   }
 }
