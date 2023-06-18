@@ -10,8 +10,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Yes No App',
+      //Saco la barra de debug
       debugShowCheckedModeBanner: false,
-      theme: AppTheme().theme(),
+      //Aca le paso el tema personalizado
+      theme: AppTheme(selectedColor: 8).theme(),
       home: Scaffold(
         appBar: AppBar(
           title: const Text('Material App Bar'),
