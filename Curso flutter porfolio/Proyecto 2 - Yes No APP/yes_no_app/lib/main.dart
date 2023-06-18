@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
       //Saco la barra de debug
       debugShowCheckedModeBanner: false,
       //Aca le paso el tema personalizado
-      theme: AppTheme(selectedColor: 8).theme(),
+      theme: AppTheme(selectedColor: 1).theme(),
       home: const ChatScreen(),
     );
   }
