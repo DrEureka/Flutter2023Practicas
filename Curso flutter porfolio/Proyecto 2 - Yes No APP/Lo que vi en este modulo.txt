@@ -1,4 +1,4 @@
-Esto vi en esta seccion part1:
+MODULO 5 part1:
 TextEditingControllers
 
 Focus Nodes
@@ -23,3 +23,21 @@ Image (desde internet)
 
 ClipRRect (bordes redondeados)
 /////////////////////////////////////////////////////////////////
+MODULO 6 Parte 2:
+Puntualmente veremos:
+
+Gestores de estado
+
+Mappers
+
+Peticiones HTTP
+
+Dio
+
+Paquetes
+
+Funciones que retornan valores como callbacks
+
+Scroll
+
+Provider
