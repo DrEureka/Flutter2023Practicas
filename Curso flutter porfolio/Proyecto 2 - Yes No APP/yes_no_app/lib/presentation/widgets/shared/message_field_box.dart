@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class MessageFieldBox extends StatelessWidget {
-  const MessageFieldBox({super.key});
+  //valuechanged es un tipo de dato que nos permite pasar una funcion por parametro
+  final ValueChanged<String> onValue;
+  const MessageFieldBox({super.key, required this.onValue});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +17,7 @@ class MessageFieldBox extends StatelessWidget {
     );
     final inputDecoration = InputDecoration(
       //TODO a chequear el mensaje de pregunta
-      hintText: 'Escribe la pregunta...',
+      hintText: 'Escribe la pregunta incluyendo "?" al final..',
       filled: true,
       enabledBorder: outlineInputBorder,
       focusedBorder: outlineInputBorder,
@@ -23,8 +25,9 @@ class MessageFieldBox extends StatelessWidget {
         icon: const Icon(Icons.send_outlined),
         onPressed: () {
           final textValue = textController.value.text;
-          print('Send: $textValue');
+          //  print('Send: $textValue');
           textController.clear();
+          onValue(textValue);
         },
       ),
     );
@@ -36,14 +39,16 @@ class MessageFieldBox extends StatelessWidget {
       },
       focusNode: focusNode,
       controller: textController,
-      //decoration es para darle formato al campo de texto
+      //decoration es para give format al campo de text
       decoration: inputDecoration,
       //para que se envie el mensaje cuando se presione enter
       onFieldSubmitted: (value) {
-        print('ENTER: $value');
+        // print('ENTER: $value');
         //limpio el campo de texto
         textController.clear();
         focusNode.requestFocus();
+        //le paso el valor al padre
+        onValue(value);
       },
       /*  onChanged: (value) {
         print('Input:$value');

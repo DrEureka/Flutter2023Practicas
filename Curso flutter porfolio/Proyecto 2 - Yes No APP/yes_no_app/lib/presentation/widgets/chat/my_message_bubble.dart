@@ -23,7 +23,7 @@ class MyMessageBubble extends StatelessWidget {
           ),
         ),
         //le agrego un espacio entre los mensajes
-        const SizedBox(height: 10)
+        const SizedBox(height: 5)
       ],
     );
   }

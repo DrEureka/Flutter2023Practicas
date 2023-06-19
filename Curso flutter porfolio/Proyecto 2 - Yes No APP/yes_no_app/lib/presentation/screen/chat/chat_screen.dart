@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:yes_no_app/domain/entities/message.dart';
 import 'package:yes_no_app/presentation/widgets/chat/my_message_bubble.dart';
 
+import '../../../domain/entities/message.dart';
 import '../../../providers/chat_provider.dart';
 import '../../widgets/chat/other_message_bubble.dart';
 import '../../widgets/shared/message_field_box.dart';
@@ -50,6 +50,8 @@ class _ChatView extends StatelessWidget {
             //creo un expanded para que el listview ocupe todo el espacio disponible
             Expanded(
                 child: ListView.builder(
+              //le paso el controller para que sepa que hacer cuando se agregue un nuevo elemento
+              controller: chatProvider.chatScrollController,
               //le paso el provider para que sepa cuantos elementos tiene que renderizar
               itemCount: chatProvider.messageList.length,
               // itembuilder es como va renderizar cada elemento
@@ -57,7 +59,7 @@ class _ChatView extends StatelessWidget {
                 final message = chatProvider.messageList[index];
 
                 return (message.fromWho == FromWho.other)
-                    ? OtherMessageBubble()
+                    ? OtherMessageBubble(message: message)
                     : MyMessageBubble(message: message);
 
                 /*   return (index % 2 == 0)
@@ -66,7 +68,10 @@ class _ChatView extends StatelessWidget {
                     */
               },
             )),
-            const MessageFieldBox(),
+            MessageFieldBox(
+              //aca le paso el provider para que sepa que hacer cuando se presione el boton
+              onValue: (value) => chatProvider.sendMessage(value),
+            ),
           ],
         ),
       ),
