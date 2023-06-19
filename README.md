@@ -6,3 +6,8 @@ Programador: D.Rama
 ```Flutter
 ver. 3.10 (2013)
 ```
+## LISTADO DE PRACTICAS:
+```
+HelloWord Flutter
+Modulo YesNoApp(http://kratosyesno.rf.gd/)http://kratosyesno.rf.gd/
+```
