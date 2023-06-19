@@ -45,7 +45,12 @@ class _ImageBubble extends StatelessWidget {
         fit: BoxFit.cover,
         //propiedad loadingbuilder para que se muestre la imagen mientras carga
         loadingBuilder: (context, child, loadingProgress) {
-          if (loadingProgress == null) return child;
+          if (loadingProgress == null) {
+            return (child);
+          } // PUEDO TENER ELSE IF ESTE ES EL FORMATO: else if (loadingProgress == true) {
+          // return (child);
+          // }
+
           return Container(
             width: size.width * 0.7,
             height: 150,
