@@ -19,6 +19,7 @@ class OtherMessageBubble extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             child: Text(
+
                 //  'Yo solo soy lo que los dioses me hicieron ser. mi respuesta es: message.text',
                 message.text,
                 style: const TextStyle(color: Colors.white)),
@@ -50,7 +51,8 @@ class _ImageBubble extends StatelessWidget {
         //TODO: Sacar la URL DE CORS ANYWHERE...
         //https://cors-anywhere.herokuapp.com/ para que me permita levantar la imagen desde dev.
         // 'https://cors-anywhere.herokuapp.com/https://yesno.wtf/assets/yes/7-653c8ee5d3a6bbafd759142c9c18d76c.gif',
-        'https://cors-anywhere.herokuapp.com/$imageUrl',
+        //'https://cors-anywhere.herokuapp.com/$imageUrl',
+        imageUrl,
         width: size.width * 0.7,
         height: 150,
         fit: BoxFit.cover,
