@@ -6,7 +6,7 @@ import '../domain/entities/message.dart';
 //ademas de ser un gestor de estados!
 class ChatProvider extends ChangeNotifier {
   //changenotifyer es un objeto que nos permite notificar a los widgets que estan escuchando
-  List<Message> message = [
+  List<Message> messageList = [
     Message(text: 'hola kratos', fromWho: FromWho.me),
     Message(text: 'como va?', fromWho: FromWho.me),
   ];

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:yes_no_app/domain/entities/message.dart';
 import 'package:yes_no_app/presentation/widgets/chat/my_message_bubble.dart';
 
+import '../../../providers/chat_provider.dart';
 import '../../widgets/chat/other_message_bubble.dart';
 import '../../widgets/shared/message_field_box.dart';
 
@@ -31,6 +34,9 @@ class ChatScreen extends StatelessWidget {
 class _ChatView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    //se crea una variable para poder acceder al provider y que este pendiente de los cambios
+    final chatProvider = context.watch<ChatProvider>();
+
     //creo un SafeArea para que no se superponga con la barra de notificaciones con un warp widget
     return SafeArea(
       left: false,
@@ -42,12 +48,22 @@ class _ChatView extends StatelessWidget {
         child: Column(
           children: [
             //creo un expanded para que el listview ocupe todo el espacio disponible
-            Expanded(child: ListView.builder(
+            Expanded(
+                child: ListView.builder(
+              //le paso el provider para que sepa cuantos elementos tiene que renderizar
+              itemCount: chatProvider.messageList.length,
               // itembuilder es como va renderizar cada elemento
               itemBuilder: (context, index) {
-                return (index % 2 == 0)
-                    ? const OtherMessageBubble()
+                final message = chatProvider.messageList[index];
+
+                return (message.fromWho == FromWho.other)
+                    ? OtherMessageBubble()
+                    : MyMessageBubble(message: message);
+
+                /*   return (index % 2 == 0)
+                    //'?' const OtherMessageBubble()
                     : const MyMessageBubble();
+                    */
               },
             )),
             const MessageFieldBox(),
