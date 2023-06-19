@@ -25,7 +25,6 @@ class OtherMessageBubble extends StatelessWidget {
 
         _ImageBubble(),
         const SizedBox(height: 10),
-        //Todo:IMAGEN
       ],
     );
   }
@@ -44,6 +43,16 @@ class _ImageBubble extends StatelessWidget {
         width: size.width * 0.7,
         height: 150,
         fit: BoxFit.cover,
+        //propiedad loadingbuilder para que se muestre la imagen mientras carga
+        loadingBuilder: (context, child, loadingProgress) {
+          if (loadingProgress == null) return child;
+          return Container(
+            width: size.width * 0.7,
+            height: 150,
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+            child: const Text('Kratos esta escribiendo...'),
+          );
+        },
       ),
     );
   }
