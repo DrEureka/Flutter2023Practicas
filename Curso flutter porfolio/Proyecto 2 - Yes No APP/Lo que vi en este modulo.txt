@@ -1,0 +1,25 @@
+Esto vi en esta seccion part1:
+TextEditingControllers
+
+Focus Nodes
+
+ThemeData
+
+Widgets como:
+
+Containers
+
+SizeBox
+
+ListViews
+
+CustomWidgets
+
+Expanded
+
+Padding
+
+Image (desde internet)
+
+ClipRRect (bordes redondeados)
+/////////////////////////////////////////////////////////////////
